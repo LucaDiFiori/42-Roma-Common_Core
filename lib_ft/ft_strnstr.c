@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:42:38 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 17:50:22 by ldi-fior         ###   ########.fr       */
+/*   Created: 2024/01/08 18:37:30 by ldi-fior          #+#    #+#             */
+/*   Updated: 2024/01/08 18:46:14 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_strnstr(const char *source, const char *to_find, size_t len)
 {
-	int	i;
+	size_t	len2;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (*to_find == '\0')
+		return (source);
+	len2 = ft_strlen(to_find);
+	while (*source && n >= len2)
+	{
+		if (*source == *to_find && ft_memcmp(source, to_find, len2) == 0)
+			return (source);
+		source++;
+	}
+	return (0);
 }

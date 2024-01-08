@@ -6,13 +6,13 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:05:05 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 16:33:18 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/08 16:47:59 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_rev_memcpy(void *dest, const void *src, size_t n)
+static void	*ft_rev_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*ptr_dest;
 	unsigned char	*ptr_src;
@@ -24,7 +24,7 @@ void	*ft_rev_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-void	*memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (src == dst || n == 0)
 		return (dst);
