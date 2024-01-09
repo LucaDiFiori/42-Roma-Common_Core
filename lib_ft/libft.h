@@ -6,7 +6,7 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:53:14 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/09 10:54:13 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:21:22 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *source, const char *to_find, size_t len);
 int		ft_atoi(const char *nptr);
 void	*ft_memchr(const void *s, int c, size_t n);
+void    *ft_calloc(siza_t count, size_t size);
+void    *ft_strdup(const char *src);
 #endif
