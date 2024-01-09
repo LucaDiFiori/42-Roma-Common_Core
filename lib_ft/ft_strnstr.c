@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 18:37:30 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 18:46:14 by ldi-fior         ###   ########.fr       */
+/*   Created: 2024/01/09 09:29:34 by ldi-fior          #+#    #+#             */
+/*   Updated: 2024/01/09 12:39:55 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 char	*ft_strnstr(const char *source, const char *to_find, size_t len)
 {
-	size_t	len2;
+	int	i;
+	int	j;
 
-	if (*to_find == '\0')
-		return (source);
-	len2 = ft_strlen(to_find);
-	while (*source && n >= len2)
+	i = 0;
+	j = 0;
+	if (to_find[j] == '\0')
+		return ((char *)source);
+	while (source[i] && len)
 	{
-		if (*source == *to_find && ft_memcmp(source, to_find, len2) == 0)
-			return (source);
-		source++;
+		while ((to_find[j] == source[i + j]))
+			j++;
+		if (to_find[j] == '\0')
+			return ((char *)&source[i]);
+		j++;
+		j = 0;
+		len--;
 	}
-	return (0);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:55:56 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 12:06:42 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:38:28 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	*ft_memset(void *b, int c, size_t len)
 	ptr = b;
 	while (len--)
 		*ptr++ = (unsigned char)c;
-	return (ptr);
+	return (b);
 }

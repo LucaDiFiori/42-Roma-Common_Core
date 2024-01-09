@@ -6,13 +6,13 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:33:46 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 17:34:39 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/09 09:07:04 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

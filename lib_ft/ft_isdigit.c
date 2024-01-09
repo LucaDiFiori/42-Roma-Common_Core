@@ -6,15 +6,12 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:13:26 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 11:57:30 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:16:09 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 int	ft_isdigit(int c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	return (c >= '0' && c <= '9');
 }

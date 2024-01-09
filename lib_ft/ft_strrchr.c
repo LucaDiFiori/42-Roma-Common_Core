@@ -6,7 +6,7 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:17:08 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 19:19:05 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/09 11:59:54 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*temp;
-	int		size;
-	
-	size = ft_strlen(s);
-	temp = (char *)s + size;
-	while (*temp != c)
+
+	temp = (char *s) + ft_strlen(s);
+	if (c == '\0')
+		return (temp);
+	while (temp >= s)
 	{
-		if (*temp == s)
-			return (0);
+		if (*temp == c)
+			return (temp);
 		temp--;
 	}
-	return (temp);
+	return (NULL);
 }
