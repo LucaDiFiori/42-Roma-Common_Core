@@ -6,12 +6,12 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:01:24 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/09 10:52:43 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:19:03 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

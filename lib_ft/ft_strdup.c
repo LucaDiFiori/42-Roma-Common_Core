@@ -6,14 +6,16 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:07:55 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/09 13:17:28 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:30:49 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strdup(const char *src)
 {
 	char	*dest;
-	int			i;
+	int		i;
 
 	if (!src)
 		return (0);

@@ -6,14 +6,14 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:42:38 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/08 17:50:22 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/10 07:38:07 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
