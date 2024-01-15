@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 09:29:34 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/13 11:55:54 by ldi-fior         ###   ########.fr       */
+/*   Created: 2024/01/11 09:55:08 by ldi-fior          #+#    #+#             */
+/*   Updated: 2024/01/13 16:01:16 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *source, const char *to_find, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	size_t	j;
+	char				*str;
+	unsigned int		i;
 
-	i = 0;
-	j = 0;
-	if (!(*to_find))
-		return ((char *)source);
-	if (!len || !(*source))
+	if (!s || !f)
 		return (NULL);
-	while (source[i] && len)
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (0);
+	i = 0;
+	while (s[i])
 	{
-		while ((j < len && to_find[j] && to_find[j] == source[i + j]))
-			j++;
-		if (to_find[j] == '\0')
-			return ((char *)&source[i]);
+		str[i] = f(i, (char)s[i]);
 		i++;
-		j = 0;
-		len--;
 	}
-	return (NULL);
+	str[i] = '\0';
+	return (str);
 }

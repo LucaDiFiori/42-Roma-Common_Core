@@ -6,7 +6,7 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 07:28:56 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/11 08:32:17 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:53:06 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 static int	nbstr_len(int n)
 {
 	int	len;
-/*len = 1 per tener posto al terminatore nella stringa*/
-	len = 1;
+
+	len = 0;
 
 /* > Se n = 0 --> avro una stringa di lunghezza 2
    > Se la n e'<0 faccio spazio nella stringa per il "-"*/
@@ -43,15 +43,13 @@ char	*ft_itoa(int n)
 
 	base = "0123456789";
 
-	/* Sottraggo uno per non sovrascrivere il terminatore*/
-	len = nbstr_len(n) - 1;
+	len = nbstr_len(n);
 
 	/*allocazione- - - - - - - - - - - - - - - - - - - - - - - */
-	n_str = (char *)malloc(sizeof(char) * nbstr_len(n));
+	n_str = (char *)malloc(sizeof(char) * len + 1);
 	if (n_str == NULL)
 		return (NULL);
-	/* Se malloc riesce inserisco il terminatore alla stringa*/
-	else
+	/*inserisco il terminatore alla stringa*/
 		n_str[nbstr_len(n)] = '\0';
 	/*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -59,7 +57,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		n_str[0] = '-';
 	if (n == 0)
-		n_str[len] = '0';
+		n_str[0] = '0';
 
 	while (n)
 	{
