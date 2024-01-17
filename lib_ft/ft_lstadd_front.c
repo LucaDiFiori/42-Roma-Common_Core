@@ -33,9 +33,9 @@ void    ft_lstadd_front(t_list **lst, t_list *new)
        la posizione di memopria della prima lista)*/
     new -> next = *lst;
 
-    /*Assegno poi al puntatore che puntava al primo nodo il 
-      valore di memoria del nuovo nodo che ho aggiunto.
-      ° In sostanza li ho "sbambiati"*/
+    /*Considerando che lst e' un puntatore che punta al primo
+     elemento della lista (per def da esercizio) ora devo
+     assegnargli il valore della nuova lista head*/
     *lst = new;
 
 }
