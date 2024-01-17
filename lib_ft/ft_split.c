@@ -6,7 +6,7 @@
 /*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:48:31 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/01/13 17:03:46 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:20:03 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ char	**ft_split(char const *str, char c)
 	size_t	end_wrd;
 	size_t	index;
 	char	**ptr_ret;
-
-
+	
+	if (!str)
+		return (NULL);
 	ptr_ret = malloc(sizeof(char *) * (count_words(str, c) + 1));
 	if (ptr_ret == NULL)
 		return (NULL);
