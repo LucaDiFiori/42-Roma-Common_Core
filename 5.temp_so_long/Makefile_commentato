@@ -1,0 +1,103 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile_commentato                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ldi-fior <ldi-fior@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/23 15:15:31 by ldi-fior          #+#    #+#              #
+#    Updated: 2024/01/24 11:08:36 by ldi-fior         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = so_long
+
+/*sources
+  NOTA: Get_next_line non ha un make file quindi devo aggiungerne i file.c 
+        alle source. Per farlo scrivo il loro percorso:
+		es = get_next_line/file.c */
+SRC = main.c et_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+
+/*Regola di sostituizione di pattern: Questo indica di prendere ogni elemento 
+                                       nella lista SRCS, sostituire l'estensione .c 
+									   con .o e restituire l'elenco risultante 
+OBJS = $(SRCS:.c=.o)
+
+CC = gcc
+
+/*assegnato il valore ft_printf/ alla variabile FTPRINTF. 
+Questo tipo di dichiarazione è comune nei Makefile per definire 
+percorsi di directory o nomi di cartelle in modo che possano essere 
+facilmente riferiti in altre parti del Makefile
+
+FTPRINTF rappresenta il percorso della directory contenente il 
+codice sorgente di printf
+
+NOTA: "ft_printf/" e' un path
+*/
+FTPRINTF = ft_printf/
+
+/*flags di compilazione. Le seconde sono specifiche per la libreria mlx
+  aggiungendo opengl e appkit*/
+CFLAGS	= -Wall -Wextra -Werror
+MFLAGS	= -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+
+/*
+LINEA 1:
+La prima line è una regola nel Makefile. 
+In questa regola, si sta definendo che l'eseguibile ($(NAME)) dipende dai 
+file oggetto ($(OBJS)). In altre parole, l'eseguibile deve essere ricompilato 
+ogni volta che uno dei file oggetto viene modificato.
+
+NAME = TARGET dell'azione
+OBJS = file oggetto necessari per creare l eseguibile
+
+LINEA 2: make -c etc
+- comando make che viene eseguito per compilare il codice nella directory 
+specificata da $(FTPRINTF)
+- @ all'inizio di un comando impedisce la visualizzazione del comando stesso 
+mentre viene eseguito.
+- make: È il comando make che avvia la compilazione. 
+Il flag -C viene utilizzato per specificare la directory in cui eseguire make.
+- $(FTPRINTF): Questa è la variabile Makefile che rappresenta 
+il percorso della directory contenente il codice sorgente della libreria ft_printf
+- questa linea di Makefile serve a ESEGUIRE IL MAKE nella directory ft_printf per 
+assicurarsi che la libreria ft_printf sia compilata prima di procedere con 
+la creazione dell'eseguibile principale ($(NAME))
+
+LINEA 3: make ... mlx
+Fa la stessa cosa della linea 2 ma nella cartella mlx.
+Cioe' esegue il make file nella cartella mls
+
+LINE 4: cp ...
+è un comando cp che copia il file libmlx.dylib dalla directory ./mlx nella directory 
+corrente (quella in cui viene eseguito il comando).
+Quindi, questa linea di Makefile copia il file libmlx.dylib 
+dalla directory ./mlx nella directory corrente
+(Questo perche' l eseguibile principale (NAME) dipende dalla presenza in questa cartella
+di quel file)
+
+LINEA 5:
+regola per la compilazione e la creazione dell'eseguibile principale ($(NAME))
+
+$(NAME) : $(OBJS)
+	@ make -C $(FTPRINTF)
+	@ make -C ./mlx
+	cp ./mlx/libmlx.dylib .
+	${CC} ${CFLAGS} ${OBJS} ${MFLAGS} -o ${NAME} ft_printf/libftprintf.a
+
+/*comandi*/
+all:	$(NAME)
+
+clean:
+	@make clean -C $(FTPRINTF)
+	@make clean -C ./mlx
+	@rm -f $(OBJS)
+
+fclean: clean
+	@make fclean -C $(FTPRINTF)
+	@rm -f libmlx.dylib
+	@rm -f $(NAME)
+
+re: fclean all	
