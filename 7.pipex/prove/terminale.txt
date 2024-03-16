@@ -1,0 +1,61 @@
+CASI:
+SENZA VIRGOLETTE O APICI
+grep ciao in.txt                --> esce direttamente
+grep un"altra e un"altra in.txt --> se le virgolette o gli apici non sono la prima
+                                    cosa esce direttamente
+
+
+APERTE E CHIUSE SENZA ALTRA IN MEZZO
+grep "sono riuscito" in.txt  --> trova le parole
+grep 'sono riuscito' in.txt  --> trova le parole
+
+
+APERTE E CHIUSE SENZA PAROLE
+grep '' in.txt               --> Mi restituisce tutto il testo contenuto nel file
+
+
+APERTE E NON CHIUSE SENZA PAROLE
+grep ' in.txt               --> Esce il promt dquote
+
+
+
+APERTE MA NON CHIUSE SENZA ALTRA IN MEZZO
+grep "sono  in.txt  --> Esce il prompt "dquote>" che chiede allo user
+                        di terminare la parola da cercare, chiudere le 
+                        virgolette e scrivere il nome del file
+
+                        Es: 
+                        1) sono riuscito" in.txt -> cosi troverà "sono riuscito"
+                        2) riuscito" in.txt      -> troverà "riuscito"
+                        3) " in.txt              -> lo considera come "" quindi Mi
+                                                    restituisce tutto il testo
+
+
+
+ALTRE IN MEZZO
+VIRGOLETTE
+grep "un'altra e un'altra" in.txt --> trova la frase un'altra e un'altra
+                                      NOTA: Se ho " fuori e apici dentro li legge
+
+grep "un'altra e un'altra in.txt  --> dquote> 
+
+grep 'un'altra' in.txt --> dquote (se sono dispari ed uguali esce dquote)
+
+grep "un'altra' in.txt --> dquote (se sono dispari esce dquote)
+
+
+
+TUTTE UGUALI, PIU DI UNO, PARI: 
+Es: 
+grep 'un'altra e un'altra' in.txt  0  grep "un"altra e un"altra" in.txt
+
+risposta
+grep: e: No such file or directory
+grep: unaltra: No such file or directory
+
+TUTTE UGUALI, PIU DI UNO, DISPARI:
+es:
+grep "un"altra" in.txt
+
+risposta:
+dquote>
