@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldi-fior <ldi-fior@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:20:35 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/03/15 11:51:49 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:29:18 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ int quit_free(const char *error, char *str, char **mat, int err_type)
 		write (2, error, s_len(error));
 	}
 	exit (1); 
+}
+
+void free_matrix(char **mat)
+{
+	int i;
+	
+	i = -1;
+	while (mat[++i])
+		free(mat[i]);
+	free(mat);
 }

@@ -1,6 +1,7 @@
 NAME = pipex
 
-SRCS = main.c pipex_utils.c minilib.c command.c minilib_2.c
+SRCS = main.c pipex_utils.c minilib.c command.c minilib_2.c dquote_split.c \
+       split_utils.c
 
 BSRCS = 
 
@@ -31,5 +32,4 @@ clean:
 
 fclean: clean
 		@rm -f $(NAME)
-
 re: 	fclean all

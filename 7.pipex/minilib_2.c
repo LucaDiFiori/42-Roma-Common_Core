@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   minilib_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldi-fior <ldi-fior@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 10:25:35 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/03/15 14:44:08 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:27:56 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	s_len(const char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 void	ft_putstr_fd(char *s, int fd)
 {

@@ -74,7 +74,7 @@ int main(int argc, char **argv, char **envp)
     pid_t pid;
 
     if (argc == 5)
-    {
+    {   
         /*Apro la pipe*/
         if (pipe(fd) == -1)
             quit_free("Error: pipe creation failed\n", NULL, NULL, 1);
@@ -94,6 +94,7 @@ int main(int argc, char **argv, char **envp)
             waitpid(pid, NULL, 0);
             parent_p(argv, envp, fd);
         }
+
     }
     else
         quit_free("Error: Ivalid parameters\n", NULL, NULL, 1);

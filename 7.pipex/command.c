@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldi-fior <ldi-fior@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 12:44:56 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/03/15 14:30:40 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:27:58 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,35 @@
 */
 static char	*cmd_env_search(char *cmd, char **envp)
 {
-	/*CANCELLARE------------------------------*/
-    (void)cmd;
-	/******************************************/
-    
-	int  i;
+	int  	i;
+	char	**all_path;
+	char	*cmd_path;
 	
 	i = 0;
 	while (!ft_strnstr(envp[i], "PATH", 4))
 		i++;
+	/* Divido tutti i percorsi presenti nella stringa PATH
+	   NOTA = + 5 perchè skippo "PATH ="*/
+	all_path = dquote_split(envp[i] + 5, ':');
 	
-    return (envp[i]);
-    /*******************************************/
+	/*Attacco alla fine di ogni percorso il mio comando e ne testo la presenza
+	  con la funzione access*/
+	i = 0;
+	while (all_path[i])
+	{
+		cmd_path = ft_strjoin(ft_strjoin(all_path[i], "/"), cmd);
+		if (access(cmd_path, F_OK) == 0)
+		{
+			free_matrix(all_path);
+			return (cmd_path);
+		}
+		free (cmd_path);
+		i++;
+	}
+	/*Libero la matrice dei percorsi*/
+	i = -1;
+	free_matrix(all_path);
+	return (NULL);
 }
 
 /*
@@ -45,7 +62,7 @@ void	command(char *argv, char **envp)
 	cmd = NULL;
 	cmd_path = NULL;
 	
-	cmd = ft_split(argv, ' ');
+	cmd = dquote_split(argv, ' ');
     
 	if (cmd == NULL)
 		quit_free("Error: Unable to split the string.\n", NULL, NULL, 1);

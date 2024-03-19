@@ -3,28 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minilib.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldi-fior <ldi-fior@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ldi-fior <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:26:30 by ldi-fior          #+#    #+#             */
-/*   Updated: 2024/03/15 10:23:54 by ldi-fior         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:29:57 by ldi-fior         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	s_len(const char *s)
-{
-	int	i;
 
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-static char	*ft_substr(char const *s, int start, int len)
+char	*ft_substr(char const *s, int start, int len)
 {
 	char	*ptr;
 
@@ -42,49 +31,34 @@ static char	*ft_substr(char const *s, int start, int len)
 	return (ptr);
 }
 
-static int	count_words(char const *str, char c)
+const char *ft_strchar(const char *str, const char c)
 {
-	int	count;
-	int		i;
-
-	count = 0;
-	i = 0;
-	while (str[i])
+	while(str)
 	{
-		while (str[i] == c && str[i])
-			i++;
-		if (str[i] != '\0')
-			count++;
-		while (str[i] != c && str[i])
-			i++;
+		if(*str == c)
+				return(str);
+		str++;
 	}
-	return (count);
+	return (NULL);
 }
 
-char	**ft_split(char const *str, char c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	end_wrd;
-	int	index;
-	char	**ptr_ret;
+	size_t	len_s1;
+	size_t	len_s2;
+	char	*ptr;
 
-	if (!str)
-		return (NULL);
-	ptr_ret = malloc(sizeof(char *) * (count_words(str, c) + 1));
-	if (ptr_ret == NULL)
-		return (NULL);
-	index = 0;
-	while (*str)
+	if (s1 && s2)
 	{
-		if (*str == c)
-			str++;
-		else
-		{
-			end_wrd = 0;
-			while (*str && *str != c && ++end_wrd)
-				str++;
-			ptr_ret[index++] = ft_substr(str - end_wrd, 0, end_wrd);
-		}
+		len_s1 = s_len(s1);
+		len_s2 = s_len(s2);
+		ptr = (char *)malloc(len_s1 + len_s2 + 1);
+		if (ptr == NULL)
+			return (NULL);
+		ft_memcpy(ptr, s1, len_s1);
+		ft_memcpy(ptr + len_s1, s2, len_s2 + 1);
+		ptr[len_s1 + len_s2] = '\0';
+		return ((char *)ptr);
 	}
-	ptr_ret[index] = NULL;
-	return (ptr_ret);
+	return (NULL);
 }
